@@ -2,11 +2,11 @@ from starlette.requests import Request
 from starlette.responses import RedirectResponse
 
 from .templating import templating
-from .crud import create_user, list_users, authenticate_user
+from .crud import create_user, authenticate_user
 
 
 def index(request: Request):
-    return templating.TemplateResponse(request, "index.html", {"users": list_users()})
+    return templating.TemplateResponse(request, "index.html")
 
 
 def signup(request: Request):
@@ -66,4 +66,5 @@ async def signin_create(request: Request):
 
 
 def signout(request: Request):
-    pass
+    request.session.pop("user_id")
+    return RedirectResponse(request.url_for("index"), status_code=302)

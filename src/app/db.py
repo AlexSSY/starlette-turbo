@@ -8,3 +8,7 @@ SessionLocal = sessionmaker(engine, autoflush=False, autocommit=False)
 
 def create_db(decl_base_class):
     decl_base_class.metadata.create_all(engine)
+
+
+def drop_db(decl_base_class):
+    decl_base_class.metadata.drop_all(engine)
