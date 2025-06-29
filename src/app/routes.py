@@ -7,6 +7,7 @@ from .middlewares import AuthRequiredMiddleware
 
 routes = [
     Route("/", views.index, name="index", middleware=[Middleware(AuthRequiredMiddleware)]),
+    Route("/profile", views.index, name="profile", middleware=[Middleware(AuthRequiredMiddleware)]),
     Route("/signup", views.signup, name="signup"),
     Route("/signup/", views.signup_create, methods=["POST"], name="signup_create"),
     Route("/signin", views.signin, name="signin"),

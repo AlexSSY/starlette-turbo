@@ -68,3 +68,7 @@ async def signin_create(request: Request):
 def signout(request: Request):
     request.session.pop("user_id")
     return RedirectResponse(request.url_for("index"), status_code=302)
+
+
+def profile(request: Request):
+    return templating.TemplateResponse(request, "profile.html")
