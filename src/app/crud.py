@@ -22,6 +22,6 @@ def authenticate_user(username, password) -> User | None:
     return None
 
 
-def list_users(offset=0, limit=10):
+def list_users(offset=0, limit=10) -> list[User]:
     with SessionLocal() as session:
         return session.query(User).offset(offset).limit(limit).all()

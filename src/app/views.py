@@ -32,7 +32,7 @@ async def signup_create(request: Request):
         errors["password_confirmation"] = "passwords not match."
 
     if errors:
-        return templating.TemplateResponse(request, "auth/signup.html", {"errors": errors})
+        return templating.TemplateResponse(request, "auth/signup.html", {"errors": errors}, status_code=400)
 
     create_user(username, password)
     return RedirectResponse(request.url_for("index"), status_code=302)
@@ -59,7 +59,7 @@ async def signin_create(request: Request):
         errors["username"] = errors["password"] = "invalid credentials"
 
     if errors:
-        return templating.TemplateResponse(request, "auth/signin.html", {"errors": errors})
+        return templating.TemplateResponse(request, "auth/signin.html", {"errors": errors}, 400)
 
     request.session["user_id"] = user.id
     return RedirectResponse(request.url_for("index"), status_code=302)
