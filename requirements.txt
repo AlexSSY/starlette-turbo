@@ -1,0 +1,9 @@
+starlette
+jinja2
+uvicorn
+itsdangerous
+python-dotenv
+passlib
+python-multipart
+bcrypt
+sqlalchemy
